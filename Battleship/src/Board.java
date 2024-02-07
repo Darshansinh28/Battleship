@@ -2,6 +2,7 @@ public class Board {
     protected final int NUM_ROW = 8, NUM_COL = 8;
 
     protected int points;
+
     protected Coordinate[][] coordinate;
 
     //Constructor

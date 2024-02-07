@@ -8,46 +8,46 @@ public class Battleship {
         System.out.println("Hi,  let's play Battleship!");
 
 
-        Board board = new Board();
+        Board hiddenBoard = new Board();
+        Board humanboard = new Board();
+        Board computerboard = new Board();
 
-        Player human = HumanPlayerActions.initializeHuman(new Player(),board);
-        Player computer = ComputerPlayerActions.initializeComputer(new Player(),board);
+        Player human = HumanPlayerActions.initializeHuman(new Player(),humanboard);
+        Player computer = ComputerPlayerActions.initializeComputer(new Player(),computerboard);
 
 
         System.out.println("Here is your reference for this game : \n");
-        showBoard(board);
+        showBoard(humanboard);
+        showBoard(computerboard);
+
+        while (true){
+            if (humanboard.points == 0 || computerboard.points == 0 ){
+                System.out.println("GAME OVER!\n");
+                showBoard(hiddenBoard);
+                System.exit(0);
+            }
+
+            launchHumanRocket (computerboard, hiddenBoard);
+            launchComputerRocket (humanboard, hiddenBoard);
+
+            //Display board showing results of rocket launches after each turn
+            showBoard(hiddenBoard);
+
+            // Display the points at the end of each turn
+            System.out.println("Human points: " + humanboard.points);
+            System.out.println("Compu points: " + computerboard.points + "\n");
+        }
 
 
     }
 
-    public static void markBoardHuman(Board b, Player p) {
-        for (int x = 0; x < 6; x++) {		//Mark the appropriate location as a human Ship
-            int row = 0, col = 0;
-            row = p.ship[x].row;
-            col = p.ship[x].column;
-            b.coordinate[col][row].markPlayerShip();
-        }
-        for (int x = 0; x < 4; x++) {		//Mark the appropriate location as a human Grenade
-            int row = 0, col = 0;
-            row = p.grenade[x].row;
-            col = p.grenade[x].column;
-            b.coordinate[col][row].markPlayerGrenade();
-        }
-    }
+    public static void launchHumanRocket(Board computer,Board hiddenBoard){
+        System.out.print("Please enter the coordinates for your rocket, column (A-H) and the row (1-8) :  ");
 
-    public static void markBoardComputer(Board b, Player p) {
-        for (int x = 0; x < 6; x++) {		//Mark the appropriate location as a computer Grenade
-            int row = 0, col = 0;
-            row = p.ship[x].row;
-            col = p.ship[x].column;
-            b.coordinate[col][row].markComputerShip();
-        }
-        for (int x = 0; x < 4; x++) {		//Mark the appropriate location as a computer Ship
-            int row = 0, col = 0;
-            row = p.grenade[x].row;
-            col = p.grenade[x].column;
-            b.coordinate[col][row].markComputerGrenade();
-        }
+    }
+    public static void launchComputerRocket(Board human,Board hiddenBoard){
+        System.out.print("Please enter the coordinates for your rocket, column (A-H) and the row (1-8) :  ");
+
     }
 
     public static void showBoard(Board b) {
