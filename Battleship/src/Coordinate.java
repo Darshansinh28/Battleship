@@ -1,12 +1,12 @@
 public class Coordinate {
 
-    private boolean playerHasShip, playerHasGrenade;
+    private boolean HumanHasShip, HumanHasGrenade;
     private boolean computerHasShip, computerHasGrenade;
 
     private boolean called;
     public Coordinate() {
-        this.playerHasShip = false;
-        this.playerHasGrenade = false;
+        this.HumanHasShip = false;
+        this.HumanHasGrenade = false;
         this.computerHasShip = false;
         this.computerHasGrenade = false;
         this.called = false;
@@ -14,12 +14,12 @@ public class Coordinate {
     }
 
     // Getters
-    public boolean hasPlayerShip() {
-        return this.playerHasShip;
+    public boolean hasHumanShip() {
+        return this.HumanHasShip;
     }
 
-    public boolean hasPlayerGrenade() {
-        return this.playerHasGrenade;
+    public boolean hasHumanGrenade() {
+        return this.HumanHasGrenade;
     }
 
     public boolean hasComputerShip() {
@@ -31,12 +31,12 @@ public class Coordinate {
     }
 
     // Setters
-    public void markPlayerShip() {
-        this.playerHasShip = true;
+    public void markHumanShip() {
+        this.HumanHasShip = true;
     }
 
-    public void markPlayerGrenade() {
-        this.playerHasGrenade = true;
+    public void markHumanGrenade() {
+        this.HumanHasGrenade = true;
     }
 
     public void markComputerShip() {
@@ -58,13 +58,13 @@ public class Coordinate {
         if (called) {
             indicator = "x";
         }
-        else if (playerHasShip) {
+        else if (HumanHasShip) {
             indicator = "s";
         }
         else if (computerHasShip) {
             indicator = "S";
         }
-        else if (playerHasGrenade) {
+        else if (HumanHasGrenade) {
             indicator = "g";
         }
         else if (computerHasGrenade) {

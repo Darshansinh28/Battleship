@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class HumanPlayerActions {
-    public static Player initializeHuman(Player player,Board board){
+    public static void initializeHuman(Player player,Board board){
 
         int counter = 1;
         for (Ship s : player.ship) {
@@ -18,9 +18,9 @@ public class HumanPlayerActions {
                     int inputshipColumn=Constants.mapCharacterToIntColumn(userShipColumnLetter);
                     inputshipRow = inputshipRow - 1;
 
-                    if (!board.coordinate[inputshipRow][inputshipColumn].hasPlayerShip() && !board.coordinate[inputshipRow][inputshipColumn].hasPlayerGrenade()){
+                    if (!board.coordinate[inputshipRow][inputshipColumn].hasHumanShip() && !board.coordinate[inputshipRow][inputshipColumn].hasHumanGrenade()){
                         s.setPosition(inputshipRow,inputshipColumn);
-                        board.coordinate[inputshipRow][inputshipColumn].markPlayerShip();
+                        board.coordinate[inputshipRow][inputshipColumn].markHumanShip();
                         counter++;
                     }
                     else{
@@ -55,9 +55,9 @@ public class HumanPlayerActions {
                     int inputgrenadeColumn = Constants.mapCharacterToIntColumn(userGrenadeColumnLetter);
                     inputgrenadeRow = inputgrenadeRow - 1;
 
-                    if (!board.coordinate[inputgrenadeRow][inputgrenadeColumn].hasPlayerShip() && !board.coordinate[inputgrenadeRow][inputgrenadeColumn].hasPlayerGrenade()) {
+                    if (!board.coordinate[inputgrenadeRow][inputgrenadeColumn].hasHumanShip() && !board.coordinate[inputgrenadeRow][inputgrenadeColumn].hasHumanGrenade()) {
                         g.setPosition(inputgrenadeRow, inputgrenadeColumn);
-                        board.coordinate[inputgrenadeRow][inputgrenadeColumn].markPlayerGrenade();
+                        board.coordinate[inputgrenadeRow][inputgrenadeColumn].markHumanGrenade();
                         counter++; // Increment counter when a valid grenade position is entered
                     } else {
                         System.out.println("Sorry, coordinates already used. Try again.");
@@ -69,7 +69,6 @@ public class HumanPlayerActions {
         }
         System.out.println(" ");
 
-        return player;
     }
 
 }

@@ -1,18 +1,18 @@
 import java.util.Random;
 public class ComputerPlayerActions {
-    public static Player initializeComputer(Player player,Board board){
+    public static void initializeComputer(Player player,Board computerBoard,Board humanBoard) {
 
-    int counter = 1;
+        int counter = 1;
         for (Ship s : player.ship) {
             int column, row;
             do {
                 column = Constants.randomInt(0, 7);
                 row = Constants.randomInt(0, 7);
-            } while (board.coordinate[row][column].hasPlayerShip() || board.coordinate[row][column].hasPlayerGrenade()
-                    || board.coordinate[row][column].hasComputerShip() || board.coordinate[row][column].hasComputerGrenade());
+            } while (humanBoard.coordinate[row][column].hasHumanShip() || humanBoard.coordinate[row][column].hasHumanGrenade()
+                    || computerBoard.coordinate[row][column].hasComputerShip() || computerBoard.coordinate[row][column].hasComputerGrenade());
 
             s.setPosition(row, column);
-            board.coordinate[row][column].markComputerShip();
+            computerBoard.coordinate[row][column].markComputerShip();
             counter++;
         }
 
@@ -22,15 +22,12 @@ public class ComputerPlayerActions {
             do {
                 column = Constants.randomInt(0, 7);
                 row = Constants.randomInt(0, 7);
-            } while (board.coordinate[row][column].hasPlayerShip() || board.coordinate[row][column].hasPlayerGrenade()
-                    || board.coordinate[row][column].hasComputerShip() || board.coordinate[row][column].hasComputerGrenade());
+            } while (humanBoard.coordinate[row][column].hasHumanShip() || humanBoard.coordinate[row][column].hasHumanGrenade()
+                    || computerBoard.coordinate[row][column].hasComputerShip() || computerBoard.coordinate[row][column].hasComputerGrenade());
 
-                g.setPosition(row, column);
-                board.coordinate[row][column].markComputerGrenade();
-                counter++;
+            g.setPosition(row, column);
+            computerBoard.coordinate[row][column].markComputerGrenade();
+            counter++;
         }
-        return player;
     }
-
-
 }

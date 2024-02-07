@@ -8,37 +8,39 @@ public class Battleship {
 
 
         Board hiddenBoard = new Board();
-        Board humanboard = new Board();
-        Board computerboard = new Board();
+        Board humanBoard = new Board();
+        Board computerBoard = new Board();
+//        Board referenceBoard = new Board();
 
-        Player human = HumanPlayerActions.initializeHuman(new Player(),humanboard);
-        Player computer = ComputerPlayerActions.initializeComputer(new Player(),computerboard);
+        HumanPlayerActions.initializeHuman(new Player(),humanBoard);
+        ComputerPlayerActions.initializeComputer(new Player(),computerBoard,humanBoard);
 
 
         System.out.println("Here is your reference for this game : \n");
-        showBoard(humanboard);
-        showBoard(computerboard);
+        showBoard(humanBoard);
+        showBoard(computerBoard);
 
         while (true){
-            if (humanboard.points == 0 || computerboard.points == 0 ){
+            if (humanBoard.points == 0 || computerBoard.points == 0 ){
                 System.out.println("GAME OVER!\n");
                 showBoard(hiddenBoard);
                 System.exit(0);
             }
 
-            launchHumanRocket (computerboard, hiddenBoard);
-            launchComputerRocket (humanboard, hiddenBoard);
+            launchHumanRocket (computerBoard, hiddenBoard);
+            launchComputerRocket (humanBoard, hiddenBoard);
 
             //Display board showing results of rocket launches after each turn
             showBoard(hiddenBoard);
 
             // Display the points at the end of each turn
-            System.out.println("Human points: " + humanboard.points);
-            System.out.println("Computer points: " + computerboard.points + "\n");
+            System.out.println("Human points: " + humanBoard.points);
+            System.out.println("Computer points: " + computerBoard.points + "\n");
 
-            showBoard(humanboard);
-            showBoard(computerboard);
+            showBoard(humanBoard);
+            showBoard(computerBoard);
         }
+
 
 
     }
@@ -80,12 +82,12 @@ public class Battleship {
 
         System.out.println("Computer's rocket: (" + (characterComputerColumn) + " , " + (computerRandomrow+1) + ")\n");
 
-        if (humanBoard.coordinate[computerRandomrow][computerRandomcolumn].hasPlayerShip()){
+        if (humanBoard.coordinate[computerRandomrow][computerRandomcolumn].hasHumanShip()){
             humanBoard.points--;
-            hiddenBoard.coordinate[computerRandomrow][computerRandomcolumn].markPlayerShip();
+            hiddenBoard.coordinate[computerRandomrow][computerRandomcolumn].markHumanShip();
             System.out.println("\nYou sunk the Human's battleship!");
-        }else if (humanBoard.coordinate[computerRandomrow][computerRandomcolumn].hasPlayerGrenade()) {
-            hiddenBoard.coordinate[computerRandomrow][computerRandomcolumn].markPlayerGrenade();
+        }else if (humanBoard.coordinate[computerRandomrow][computerRandomcolumn].hasHumanGrenade()) {
+            hiddenBoard.coordinate[computerRandomrow][computerRandomcolumn].markHumanGrenade();
             System.out.println("\nYou hit the Human's grenade!");
         }
         else {
@@ -94,7 +96,7 @@ public class Battleship {
         System.out.println(" ");
     }
 
-    public static void showBoard(Board b) {
+    public static void showBoard(Board board) {
 
         System.out.println("   A  B  C  D  E  F  G  H");
 
@@ -102,10 +104,10 @@ public class Battleship {
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 8; y++) {
                 if (y==0) {
-                    System.out.print((x+1) + "  " +b.coordinate[x][y]);
+                    System.out.print((x+1) + "  " +board.coordinate[x][y]);
                 }
                 else {
-                    System.out.print("  " + b.coordinate[x][y]);
+                    System.out.print("  " + board.coordinate[x][y]);
                 }
             }
             System.out.println(" ");
