@@ -4,7 +4,6 @@ public class Battleship {
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
 
-        Scanner input = new Scanner(System.in);
         System.out.println("Hi,  let's play Battleship!");
 
 
@@ -36,6 +35,9 @@ public class Battleship {
             // Display the points at the end of each turn
             System.out.println("Human points: " + humanboard.points);
             System.out.println("Computer points: " + computerboard.points + "\n");
+
+            showBoard(humanboard);
+            showBoard(computerboard);
         }
 
 
@@ -48,7 +50,7 @@ public class Battleship {
         char userrocketColumnLetter = userInputrocketindex.charAt(0);
         int inputrocketRow = userInputrocketindex.charAt(1) - '0';
 
-        if (userrocketColumnLetter >= 'a' && userrocketColumnLetter <= 'h' && userrocketColumnLetter >= 1 && userrocketColumnLetter <= 8) {
+        if (userrocketColumnLetter >= 'a' && userrocketColumnLetter <= 'h' && inputrocketRow >= 1 && inputrocketRow <= 8) {
 
             int inputrocketColumn = Constants.mapCharacterToIntColumn(userrocketColumnLetter);
             inputrocketRow = inputrocketRow - 1;
