@@ -1,11 +1,11 @@
-public class Coordinate {
+public class Cell {
 
     private boolean humanShipPresent, humanGrenadePresent;
     private boolean computerShipPresent, computerGrenadePresent;
 
     private boolean called;
 
-    public Coordinate() {
+    public Cell() {
         this.humanShipPresent = false;
         this.humanGrenadePresent = false;
         this.computerShipPresent = false;

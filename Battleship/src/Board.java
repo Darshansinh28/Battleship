@@ -3,14 +3,14 @@ public class Board {
 
     protected int points;
 
-    protected Coordinate[][] coordinate;
+    protected Cell[][] cell;
 
     //Constructor
     public Board() {
-        this.coordinate = new Coordinate[NUM_COL][NUM_ROW];
+        this.cell = new Cell[NUM_COL][NUM_ROW];
         for(int x = 0; x < NUM_ROW; x++) {	//When initializing an ARRAY OF OBJECTS you must initialize each of them separately!!!
             for (int y = 0; y < NUM_COL; y++) {
-                coordinate[x][y] = new Coordinate();
+                cell[x][y] = new Cell();
             }
         }
         this.points = 6;

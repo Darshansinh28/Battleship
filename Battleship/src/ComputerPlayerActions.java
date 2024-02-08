@@ -7,10 +7,10 @@ public class ComputerPlayerActions {
             while(true) {
                 column = Constants.randomInt(0, 7);
                 row = Constants.randomInt(0, 7);
-                if (!humanBoard.coordinate[row][column].hasHumanShip() && !humanBoard.coordinate[row][column].hasHumanGrenade()
-                        && !computerBoard.coordinate[row][column].hasComputerShip() && !computerBoard.coordinate[row][column].hasComputerGrenade()){
+                if (!humanBoard.cell[row][column].hasHumanShip() && !humanBoard.cell[row][column].hasHumanGrenade()
+                        && !computerBoard.cell[row][column].hasComputerShip() && !computerBoard.cell[row][column].hasComputerGrenade()){
                     s.setPosition(row, column);
-                    computerBoard.coordinate[row][column].markComputerShip();
+                    computerBoard.cell[row][column].markComputerShip();
                     break;
                 }
             }
@@ -23,10 +23,10 @@ public class ComputerPlayerActions {
             while(true) {
                 column = Constants.randomInt(0, 7);
                 row = Constants.randomInt(0, 7);
-                if (!humanBoard.coordinate[row][column].hasHumanShip() && !humanBoard.coordinate[row][column].hasHumanGrenade()
-                        && !computerBoard.coordinate[row][column].hasComputerShip() && !computerBoard.coordinate[row][column].hasComputerGrenade()){
+                if (!humanBoard.cell[row][column].hasHumanShip() && !humanBoard.cell[row][column].hasHumanGrenade()
+                        && !computerBoard.cell[row][column].hasComputerShip() && !computerBoard.cell[row][column].hasComputerGrenade()){
                     g.setPosition(row, column);
-                    computerBoard.coordinate[row][column].markComputerGrenade();
+                    computerBoard.cell[row][column].markComputerGrenade();
                     break;
                 }
             }

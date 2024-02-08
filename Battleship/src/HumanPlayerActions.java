@@ -18,9 +18,9 @@ public class HumanPlayerActions {
                     int inputshipColumn=Constants.mapCharacterToIntColumn(userShipColumnLetter);
                     inputshipRow = inputshipRow - 1;
 
-                    if (!board.coordinate[inputshipRow][inputshipColumn].hasHumanShip() && !board.coordinate[inputshipRow][inputshipColumn].hasHumanGrenade()){
+                    if (!board.cell[inputshipRow][inputshipColumn].hasHumanShip() && !board.cell[inputshipRow][inputshipColumn].hasHumanGrenade()){
                         s.setPosition(inputshipRow,inputshipColumn);
-                        board.coordinate[inputshipRow][inputshipColumn].markHumanShip();
+                        board.cell[inputshipRow][inputshipColumn].markHumanShip();
                         break;
                     }
                     else{
@@ -51,9 +51,9 @@ public class HumanPlayerActions {
                     int inputgrenadeColumn = Constants.mapCharacterToIntColumn(userGrenadeColumnLetter);
                     inputgrenadeRow = inputgrenadeRow - 1;
 
-                    if (!board.coordinate[inputgrenadeRow][inputgrenadeColumn].hasHumanShip() && !board.coordinate[inputgrenadeRow][inputgrenadeColumn].hasHumanGrenade()) {
+                    if (!board.cell[inputgrenadeRow][inputgrenadeColumn].hasHumanShip() && !board.cell[inputgrenadeRow][inputgrenadeColumn].hasHumanGrenade()) {
                         g.setPosition(inputgrenadeRow, inputgrenadeColumn);
-                        board.coordinate[inputgrenadeRow][inputgrenadeColumn].markHumanGrenade();
+                        board.cell[inputgrenadeRow][inputgrenadeColumn].markHumanGrenade();
                         break;
                     } else {
                         System.out.println("Sorry, coordinates already used. Try again.");

@@ -56,18 +56,18 @@ public class Battleship {
                 int inputrocketColumn = Constants.mapCharacterToIntColumn(userrocketColumnLetter);
                 inputrocketRow = inputrocketRow - 1;
 
-                if (computerBoard.coordinate[inputrocketRow][inputrocketColumn].hasComputerShip() && !hiddenBoard.coordinate[inputrocketRow][inputrocketColumn].hasCalled()) {
+                if (computerBoard.cell[inputrocketRow][inputrocketColumn].hasComputerShip() && !hiddenBoard.cell[inputrocketRow][inputrocketColumn].hasCalled()) {
                     computerBoard.points--;
-                    hiddenBoard.coordinate[inputrocketRow][inputrocketColumn].markComputerShip();
-                    hiddenBoard.coordinate[inputrocketRow][inputrocketColumn].markCall();
+                    hiddenBoard.cell[inputrocketRow][inputrocketColumn].markComputerShip();
+                    hiddenBoard.cell[inputrocketRow][inputrocketColumn].markCall();
                     System.out.println("\nYou sunk the computer's battleship!");
-                } else if (computerBoard.coordinate[inputrocketRow][inputrocketColumn].hasComputerGrenade() && !hiddenBoard.coordinate[inputrocketRow][inputrocketColumn].hasCalled()) {
-                    hiddenBoard.coordinate[inputrocketRow][inputrocketColumn].markComputerGrenade();
-                    hiddenBoard.coordinate[inputrocketRow][inputrocketColumn].markCall();
+                } else if (computerBoard.cell[inputrocketRow][inputrocketColumn].hasComputerGrenade() && !hiddenBoard.cell[inputrocketRow][inputrocketColumn].hasCalled()) {
+                    hiddenBoard.cell[inputrocketRow][inputrocketColumn].markComputerGrenade();
+                    hiddenBoard.cell[inputrocketRow][inputrocketColumn].markCall();
                     nextturn = 0;
                     System.out.println("\nYou hit the computer's grenade!");
-                } else if (!hiddenBoard.coordinate[inputrocketRow][inputrocketColumn].hasCalled()) {
-                    hiddenBoard.coordinate[inputrocketRow][inputrocketColumn].markCall();
+                } else if (!hiddenBoard.cell[inputrocketRow][inputrocketColumn].hasCalled()) {
+                    hiddenBoard.cell[inputrocketRow][inputrocketColumn].markCall();
                 }
                 turns--;
                 System.out.println(" ");
@@ -88,18 +88,18 @@ public class Battleship {
 
             System.out.println("Computer's rocket: (" + (characterComputerColumn) + " , " + (computerRandomrow + 1) + ")\n");
 
-            if (humanBoard.coordinate[computerRandomrow][computerRandomcolumn].hasHumanShip() && !hiddenBoard.coordinate[computerRandomrow][computerRandomcolumn].hasCalled()) {
+            if (humanBoard.cell[computerRandomrow][computerRandomcolumn].hasHumanShip() && !hiddenBoard.cell[computerRandomrow][computerRandomcolumn].hasCalled()) {
                 humanBoard.points--;
-                hiddenBoard.coordinate[computerRandomrow][computerRandomcolumn].markHumanShip();
-                hiddenBoard.coordinate[computerRandomrow][computerRandomcolumn].markCall();
+                hiddenBoard.cell[computerRandomrow][computerRandomcolumn].markHumanShip();
+                hiddenBoard.cell[computerRandomrow][computerRandomcolumn].markCall();
                 System.out.println("\nYou sunk the Human's battleship!");
-            } else if (humanBoard.coordinate[computerRandomrow][computerRandomcolumn].hasHumanGrenade() && !hiddenBoard.coordinate[computerRandomrow][computerRandomcolumn].hasCalled()) {
-                hiddenBoard.coordinate[computerRandomrow][computerRandomcolumn].markHumanGrenade();
-                hiddenBoard.coordinate[computerRandomrow][computerRandomcolumn].markCall();
+            } else if (humanBoard.cell[computerRandomrow][computerRandomcolumn].hasHumanGrenade() && !hiddenBoard.cell[computerRandomrow][computerRandomcolumn].hasCalled()) {
+                hiddenBoard.cell[computerRandomrow][computerRandomcolumn].markHumanGrenade();
+                hiddenBoard.cell[computerRandomrow][computerRandomcolumn].markCall();
                 nextturn = 0;
                 System.out.println("\nYou hit the Human's grenade!");
-            } else if (!hiddenBoard.coordinate[computerRandomrow][computerRandomcolumn].hasCalled()) {
-                hiddenBoard.coordinate[computerRandomrow][computerRandomcolumn].markCall();
+            } else if (!hiddenBoard.cell[computerRandomrow][computerRandomcolumn].hasCalled()) {
+                hiddenBoard.cell[computerRandomrow][computerRandomcolumn].markCall();
             }
             turns--;
             System.out.println(" ");
@@ -114,9 +114,9 @@ public class Battleship {
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 8; y++) {
                 if (y == 0) {
-                    System.out.print((x + 1) + "  " + board.coordinate[x][y]);
+                    System.out.print((x + 1) + "  " + board.cell[x][y]);
                 } else {
-                    System.out.print("  " + board.coordinate[x][y]);
+                    System.out.print("  " + board.cell[x][y]);
                 }
             }
             System.out.println(" ");
@@ -127,17 +127,17 @@ public class Battleship {
     public static void showFinalResult(Board humanBoard, Board computerboard, Player human, Player computer) {
         Board finalSampleBoard = new Board();
         for (Ship s : human.ship) {
-            finalSampleBoard.coordinate[s.row][s.column].markHumanShip();
+            finalSampleBoard.cell[s.row][s.column].markHumanShip();
         }
         for (Grenade g : human.grenade) {
-            finalSampleBoard.coordinate[g.row][g.column].markHumanGrenade();
+            finalSampleBoard.cell[g.row][g.column].markHumanGrenade();
         }
 
         for (Ship s : computer.ship) {
-            finalSampleBoard.coordinate[s.row][s.column].markComputerShip();
+            finalSampleBoard.cell[s.row][s.column].markComputerShip();
         }
         for (Grenade g : computer.grenade) {
-            finalSampleBoard.coordinate[g.row][g.column].markComputerGrenade();
+            finalSampleBoard.cell[g.row][g.column].markComputerGrenade();
         }
         showBoard(finalSampleBoard);
     }
