@@ -1,50 +1,55 @@
 public class Coordinate {
 
-    private boolean HumanHasShip, HumanHasGrenade;
-    private boolean computerHasShip, computerHasGrenade;
+    private boolean humanShipPresent, humanGrenadePresent;
+    private boolean computerShipPresent, computerGrenadePresent;
 
     private boolean called;
+
     public Coordinate() {
-        this.HumanHasShip = false;
-        this.HumanHasGrenade = false;
-        this.computerHasShip = false;
-        this.computerHasGrenade = false;
+        this.humanShipPresent = false;
+        this.humanGrenadePresent = false;
+        this.computerShipPresent = false;
+        this.computerGrenadePresent = false;
         this.called = false;
 
     }
 
     // Getters
     public boolean hasHumanShip() {
-        return this.HumanHasShip;
+        return this.humanShipPresent;
     }
 
     public boolean hasHumanGrenade() {
-        return this.HumanHasGrenade;
+        return this.humanGrenadePresent;
     }
 
     public boolean hasComputerShip() {
-        return this.computerHasShip;
+        return this.computerShipPresent;
     }
 
     public boolean hasComputerGrenade() {
-        return this.computerHasGrenade;
+        return this.computerGrenadePresent;
+    }
+
+    public boolean hasCalled() {
+        return this.called;
     }
 
     // Setters
     public void markHumanShip() {
-        this.HumanHasShip = true;
+        this.humanShipPresent = true;
     }
 
     public void markHumanGrenade() {
-        this.HumanHasGrenade = true;
+        this.humanGrenadePresent = true;
     }
 
     public void markComputerShip() {
-        this.computerHasShip = true;
+        this.computerShipPresent = true;
     }
 
     public void markComputerGrenade() {
-        this.computerHasGrenade = true;
+        this.computerGrenadePresent = true;
     }
 
     public void markCall() {
@@ -55,24 +60,20 @@ public class Coordinate {
 
         String indicator = " ";
 
-        if (called) {
-            indicator = "x";
-        }
-        else if (HumanHasShip) {
+        if (humanShipPresent) {
             indicator = "s";
-        }
-        else if (computerHasShip) {
+        } else if (computerShipPresent) {
             indicator = "S";
-        }
-        else if (HumanHasGrenade) {
+        } else if (humanGrenadePresent) {
             indicator = "g";
-        }
-        else if (computerHasGrenade) {
+        } else if (computerGrenadePresent) {
             indicator = "G";
-        }
-        else if (!called) {
+        } else if (called) {
+            indicator = "x";
+        } else {
             indicator = "_";
         }
+
         return indicator;
     }
 

@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
 public class HumanPlayerActions {
-    public static void initializeHuman(Player player,Board board){
+    public static Player initializeHuman(Player player,Board board){
 
         int counter = 1;
         for (Ship s : player.ship) {
-                while (counter <= 6) {
-                System.out.println("Enter the coordinates of your ship #" + counter +" : ");
+                while (true) {
+                System.out.print("Enter the coordinates of your ship #" + counter +" : ");
                 String userInputshipindex = Battleship.sc.next();
                 userInputshipindex = userInputshipindex.toLowerCase();
                 char userShipColumnLetter = userInputshipindex.charAt(0);
@@ -21,7 +21,7 @@ public class HumanPlayerActions {
                     if (!board.coordinate[inputshipRow][inputshipColumn].hasHumanShip() && !board.coordinate[inputshipRow][inputshipColumn].hasHumanGrenade()){
                         s.setPosition(inputshipRow,inputshipColumn);
                         board.coordinate[inputshipRow][inputshipColumn].markHumanShip();
-                        counter++;
+                        break;
                     }
                     else{
                         System.out.println("sorry, coordinates already used.  try again.");
@@ -30,20 +30,16 @@ public class HumanPlayerActions {
                 else{
                     System.out.println("sorry, coordinates outside the grid.  try again. ");
                 }
-
-
-
             }
-
-            System.out.println(" ");
+            counter++;
         }
-
+        System.out.println(" ");
 
         counter = 1;
 
         for (Grenade g : player.grenade) {
-            while (counter <= 4) {
-                System.out.println("Enter the coordinates of your grenade #" + counter + " :");
+            while (true) {
+                System.out.print("Enter the coordinates of your grenade #" + counter + " :");
 
                 String userInputgrenadeindex = Battleship.sc.next();
                 userInputgrenadeindex = userInputgrenadeindex.toLowerCase();
@@ -58,7 +54,7 @@ public class HumanPlayerActions {
                     if (!board.coordinate[inputgrenadeRow][inputgrenadeColumn].hasHumanShip() && !board.coordinate[inputgrenadeRow][inputgrenadeColumn].hasHumanGrenade()) {
                         g.setPosition(inputgrenadeRow, inputgrenadeColumn);
                         board.coordinate[inputgrenadeRow][inputgrenadeColumn].markHumanGrenade();
-                        counter++; // Increment counter when a valid grenade position is entered
+                        break;
                     } else {
                         System.out.println("Sorry, coordinates already used. Try again.");
                     }
@@ -66,9 +62,11 @@ public class HumanPlayerActions {
                     System.out.println("Sorry, coordinates outside the grid. Try again.");
                 }
             }
+            counter++;
         }
         System.out.println(" ");
 
+        return  player;
     }
 
 }
