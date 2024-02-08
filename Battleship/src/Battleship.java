@@ -8,7 +8,7 @@ public class Battleship {
         System.out.println("Hi,  let's play Battleship!");
 
         Board hiddenBoard = new Board();
-        Board humanBoard = new Board();
+        Board humanBoard =  new Board();
         Board computerBoard = new Board();
 
         Player human = HumanPlayerActions.initializeHuman(new Player(), humanBoard);
