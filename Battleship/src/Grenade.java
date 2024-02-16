@@ -2,14 +2,23 @@
  * Class representing a grenade in the game.
  * Grenades have a position on the game grid defined by row and column coordinates.
  *
- *  @author Darshansinh Dilipsinh Devda
- *  @author Pranaykumar Chauhan Rajeshkumar
- *
+ * @author Darshansinh Dilipsinh Devda (40261713)
+ * @author Pranaykumar Chauhan Rajeshkumar (40266722)
+ * <p>
+ * COMP6481
+ * Assignment 1
+ * Due Date : 16 Feb 2024
  */
 public class Grenade {
-    // Attributes to store grenade position
-    protected int row; // Row coordinate of the grenade
-    protected int column; // Column coordinate of the grenade
+    /**
+     * Row coordinate of the grenade.
+     */
+    protected int row;
+
+    /**
+     * Column coordinate of the grenade.
+     */
+    protected int column;
 
     /**
      * Constructor to initialize a grenade with default position (0,0).

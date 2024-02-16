@@ -2,14 +2,24 @@
  * Class representing a player in the game.
  * Each player has ships and grenades.
  *
- *  @author Darshansinh Dilipsinh Devda
- *  @author Pranaykumar Chauhan Rajeshkumar
- *
+ * @author Darshansinh Dilipsinh Devda (40261713)
+ * @author Pranaykumar Chauhan Rajeshkumar (40266722)
+ * <p>
+ * COMP6481
+ * Assignment 1
+ * Due Date : 16 Feb 2024
  */
 public class Player {
-    // Array to store the player's ships
+    /**
+     * Array to store the player's ships.
+     * Each ship represents a playable entity controlled by the player.
+     */
     protected Ship[] ship;
-    // Array to store the player's grenades
+
+    /**
+     * Array to store the player's grenades.
+     * Each grenade represents a throwable explosive item used by the player.
+     */
     protected Grenade[] grenade;
 
     /**

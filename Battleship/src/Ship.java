@@ -2,14 +2,23 @@
  * Class representing a ship in the game.
  * Ships have a position on the game grid defined by row and column coordinates.
  *
- *  @author Darshansinh Dilipsinh Devda
- *  @author Pranaykumar Chauhan Rajeshkumar
- *
+ * @author Darshansinh Dilipsinh Devda (40261713)
+ * @author Pranaykumar Chauhan Rajeshkumar (40266722)
+ * <p>
+ * COMP6481
+ * Assignment 1
+ * Due Date : 16 Feb 2024
  */
 public class Ship {
-    // Attributes to store ship position
-    protected int row; // Row coordinate of the ship
-    protected int column; // Column coordinate of the ship
+    /**
+     * Represents the row coordinate of the ship on the game grid.
+     */
+    protected int row;
+
+    /**
+     * Represents the column coordinate of the ship on the game grid.
+     */
+    protected int column;
 
     /**
      * Constructor to initialize a ship with default position (0,0).

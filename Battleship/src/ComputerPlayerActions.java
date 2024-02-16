@@ -3,9 +3,12 @@
  * This class provides functionality for placing computer player's ships and grenades on the game board,
  * as well as launching rockets to attack the human player's ships and grenades.
  *
- *  @author Darshansinh Dilipsinh Devda
- *  @author Pranaykumar Chauhan Rajeshkumar
- *
+ * @author Darshansinh Dilipsinh Devda (40261713)
+ * @author Pranaykumar Chauhan Rajeshkumar (40266722)
+ * <p>
+ * COMP6481
+ * Assignment 1
+ * Due Date : 16 Feb 2024
  */
 public class ComputerPlayerActions {
 

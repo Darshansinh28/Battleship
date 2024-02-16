@@ -3,13 +3,30 @@ import java.util.Scanner;
 /**
  * The main method for handling game setup and control flow.
  *
- *  @author Darshansinh Dilipsinh Devda
- *  @author Pranaykumar Chauhan Rajeshkumar
- *
+ * @author Darshansinh Dilipsinh Devda (40261713)
+ * @author Pranaykumar Chauhan Rajeshkumar (40266722)
+ * <p>
+ * COMP6481
+ * Assignment 1
+ * Due Date : 16 Feb 2024
  */
 public class Battleship {
     static Scanner sc = new Scanner(System.in);
 
+    /**
+     * The main method that initializes and controls the Battleship game.
+     * - Displays initial message.
+     * - Initializes game boards for human, computer, and hidden.
+     * - Initializes human and computer players.
+     * - Displays reference boards for the game.
+     * - Initializes turn counters.
+     * - Enters the main game loop:
+     *   - Checks if either player has won.
+     *   - Executes human and computer turns.
+     *   - Displays updated hidden board and player points.
+     *
+     *  @param args The command-line arguments passed to the program.
+     */
     public static void main(String[] args) {
         // Display initial message
         System.out.println("Hi,  let's play Battleship!");
@@ -26,7 +43,7 @@ public class Battleship {
         // Display reference boards for the game
         System.out.println("Here is your reference for this game : \n");
         showBoard(humanBoard);
-//        showBoard(computerBoard);
+        showBoard(computerBoard);
 
         // Initialize turn counters
         int humanTurn = 1;
@@ -36,13 +53,12 @@ public class Battleship {
         while (true) {
             // Check if either player has won
             if (humanBoard.points == 0 || computerBoard.points == 0) {
-                if (computerBoard.points == 0){
+                if (computerBoard.points == 0) {
                     System.out.println("Human player won the game!"); // Display winning message if human player wins
                 } else {
                     System.out.println("Sorry! You lost the game"); // Display losing message if human player loses
                 }
                 System.out.println("GAME OVER!\n");
-//                showFinalResult(humanBoard, computerBoard, human, computer);
                 showBoard(hiddenBoard);
                 System.exit(0);
             }
@@ -82,31 +98,4 @@ public class Battleship {
         }
         System.out.println(" ");
     }
-
-//    /**
-//     * Display the final result of the game, showing the positions of ships and grenades.
-//     *
-//     * @param humanBoard The human player's board.
-//     * @param computerboard The computer player's board.
-//     * @param human The human player.
-//     * @param computer The computer player.
-//     */
-//    public static void showFinalResult(Grid humanBoard, Grid computerboard, Player human, Player computer) {
-//        Grid finalSampleBoard = new Grid();
-//        for (Ship s : human.ship) {
-//            finalSampleBoard.cell[s.row][s.column].markHumanShip();
-//        }
-//        for (Grenade g : human.grenade) {
-//            finalSampleBoard.cell[g.row][g.column].markHumanGrenade();
-//        }
-//
-//        for (Ship s : computer.ship) {
-//            finalSampleBoard.cell[s.row][s.column].markComputerShip();
-//        }
-//        for (Grenade g : computer.grenade) {
-//            finalSampleBoard.cell[g.row][g.column].markComputerGrenade();
-//        }
-//        showBoard(finalSampleBoard);
-//    }
-
 }
